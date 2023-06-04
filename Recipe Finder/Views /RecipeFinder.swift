@@ -8,13 +8,33 @@
 import SwiftUI
 
 struct RecipeFinder: View {
-    
-
+    @State private var searchText = ""
+    @State private var add = ""
     var body: some View {
-        Form{
+       
+            Form{
+              
+                
+                Section(header: Text("Ingredients")) {
+                    
+                    HStack{
                         
-        }
+                        
+                        TextField("Search", text: $searchText)
+                        
+                        Button(action: {
+                            searchText = ""
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.gray)
+                        }
+                    
+                    }
+                }
+            }
+        
         .navigationTitle("Recipe Finder")
+       
     }
 }
 
