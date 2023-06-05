@@ -14,8 +14,8 @@ struct RecipeFinder: View {
     Blackbird.Database?
     
     @BlackbirdLiveModels({ db in
-        try await Ingredient.read(from: db)
-    }) var ingredients
+        try await Recipe.read(from: db)
+    }) var recipes
     
     
     @State private var searchText = ""
@@ -25,7 +25,14 @@ struct RecipeFinder: View {
         VStack{
             
             Button(action: {
-                
+                Task{
+                    try await db!.transaction { core in try
+                        core.query("INSERT INTO Recipe Book (ingredient) VALUES?",
+                        add)
+                        
+                    }
+                    
+                }
                 add = ""
                 
             }, label: {
@@ -52,7 +59,10 @@ struct RecipeFinder: View {
                     }
                     List{
                         
-                        
+                        ForEach(recipes.results) { currentItem in
+                            Text(currentItem.title)
+                            
+                        }
                         
                         
                         

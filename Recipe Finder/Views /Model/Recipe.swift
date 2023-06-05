@@ -7,11 +7,11 @@
 import Blackbird
 import Foundation
 
-struct Ingredient: BlackbirdModel {
+struct Recipe: BlackbirdModel {
     
     @BlackbirdColumn var id: Int
-    @BlackbirdColumn var ingredient: String
-    @BlackbirdColumn var Description: String
-    @BlackbirdColumn var Save: Bool 
+    @BlackbirdColumn var ingredients: String
+    @BlackbirdColumn var steps: String
+    @BlackbirdColumn var title: String
     
 }

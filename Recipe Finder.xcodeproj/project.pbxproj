@@ -14,7 +14,7 @@
 		0F54BBA92A2D65BB00804B40 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 0F54BBA82A2D65BB00804B40 /* Blackbird */; };
 		0F54BBAC2A2D6BAE00804B40 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0F54BBAB2A2D6BAE00804B40 /* db.sqlite */; };
 		0F54BBAF2A2D6BDA00804B40 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F54BBAE2A2D6BDA00804B40 /* AppDatabase.swift */; };
-		0F54BBB12A2D6CDB00804B40 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F54BBB02A2D6CDB00804B40 /* Book.swift */; };
+		0F54BBB12A2D6CDB00804B40 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F54BBB02A2D6CDB00804B40 /* Recipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		0F54BB8B2A29187C00804B40 /* RecipeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFinder.swift; sourceTree = "<group>"; };
 		0F54BBAB2A2D6BAE00804B40 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = db.sqlite; path = "Recipe Finder/db.sqlite"; sourceTree = SOURCE_ROOT; };
 		0F54BBAE2A2D6BDA00804B40 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
-		0F54BBB02A2D6CDB00804B40 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		0F54BBB02A2D6CDB00804B40 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				0F54BBAB2A2D6BAE00804B40 /* db.sqlite */,
-				0F54BBB02A2D6CDB00804B40 /* Book.swift */,
+				0F54BBB02A2D6CDB00804B40 /* Recipe.swift */,
 				0F54BBAD2A2D6BB700804B40 /* Helpers */,
 			);
 			path = Model;
@@ -179,7 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F54BBB12A2D6CDB00804B40 /* Book.swift in Sources */,
+				0F54BBB12A2D6CDB00804B40 /* Recipe.swift in Sources */,
 				0F54BBAF2A2D6BDA00804B40 /* AppDatabase.swift in Sources */,
 				0F54BB7D2A29184B00804B40 /* Recipe_FinderApp.swift in Sources */,
 				0F54BB8C2A29187C00804B40 /* RecipeFinder.swift in Sources */,
