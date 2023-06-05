@@ -11,6 +11,8 @@ import Blackbird
 struct RecipeFinder: View {
     @State private var searchText = ""
     @State private var add = ""
+    @State private var ingredient = ""
+    
     var body: some View {
         VStack{
             
@@ -24,7 +26,7 @@ struct RecipeFinder: View {
                     .font(.caption)
             })
 
-            List{
+            Form{
                                 
                 Section(header: Text("Ingredients")) {
                    
@@ -39,6 +41,14 @@ struct RecipeFinder: View {
                                 .foregroundColor(.gray)
                         }
                                                 
+                    }
+                    List{
+                        
+                        
+                        
+                        
+                        
+                        
                     }
                 }
                 
