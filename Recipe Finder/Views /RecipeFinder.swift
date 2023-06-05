@@ -6,21 +6,31 @@
 //
 
 import SwiftUI
+import Blackbird
 
 struct RecipeFinder: View {
     @State private var searchText = ""
     @State private var add = ""
     var body: some View {
-       
-            Form{
-              
+        VStack{
+            
+            Button(action: {
                 
+                add = ""
+                
+            }, label: {
+                Spacer()
+                Text("ADD")
+                    .font(.caption)
+            })
+
+            List{
+                                
                 Section(header: Text("Ingredients")) {
-                    
+                   
                     HStack{
-                        
-                        
-                        TextField("Search", text: $searchText)
+
+                        TextField("Ingredient", text: $searchText)
                         
                         Button(action: {
                             searchText = ""
@@ -28,13 +38,15 @@ struct RecipeFinder: View {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(.gray)
                         }
-                    
+                                                
                     }
                 }
+                
             }
+        }
+            
+            .navigationTitle("Recipe Book ")
         
-        .navigationTitle("Recipe Finder")
-       
     }
 }
 

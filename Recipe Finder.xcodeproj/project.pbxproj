@@ -11,6 +11,7 @@
 		0F54BB812A29184D00804B40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F54BB802A29184D00804B40 /* Assets.xcassets */; };
 		0F54BB842A29184D00804B40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F54BB832A29184D00804B40 /* Preview Assets.xcassets */; };
 		0F54BB8C2A29187C00804B40 /* RecipeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F54BB8B2A29187C00804B40 /* RecipeFinder.swift */; };
+		0F54BBA92A2D65BB00804B40 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 0F54BBA82A2D65BB00804B40 /* Blackbird */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F54BBA92A2D65BB00804B40 /* Blackbird in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +93,9 @@
 			dependencies = (
 			);
 			name = "Recipe Finder";
+			packageProductDependencies = (
+				0F54BBA82A2D65BB00804B40 /* Blackbird */,
+			);
 			productName = "Recipe Finder";
 			productReference = 0F54BB792A29184B00804B40 /* Recipe Finder.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 0F54BB702A29184B00804B40;
+			packageReferences = (
+				0F54BBA72A2D65BB00804B40 /* XCRemoteSwiftPackageReference "Blackbird" */,
+			);
 			productRefGroup = 0F54BB7A2A29184B00804B40 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -345,6 +353,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0F54BBA72A2D65BB00804B40 /* XCRemoteSwiftPackageReference "Blackbird" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marcoarment/Blackbird";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0F54BBA82A2D65BB00804B40 /* Blackbird */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F54BBA72A2D65BB00804B40 /* XCRemoteSwiftPackageReference "Blackbird" */;
+			productName = Blackbird;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0F54BB712A29184B00804B40 /* Project object */;
 }
