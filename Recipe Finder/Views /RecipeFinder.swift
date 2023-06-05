@@ -9,9 +9,17 @@ import SwiftUI
 import Blackbird
 
 struct RecipeFinder: View {
+    
+    @Environment(\.blackbirdDatabase) var db:
+    Blackbird.Database?
+    
+    @BlackbirdLiveModels({ db in
+        try await Ingredient.read(from: db)
+    }) var ingredients
+    
+    
     @State private var searchText = ""
     @State private var add = ""
-    @State private var ingredient = ""
     
     var body: some View {
         VStack{
