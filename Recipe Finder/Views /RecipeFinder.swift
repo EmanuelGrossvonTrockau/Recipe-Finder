@@ -4,9 +4,9 @@
 //
 //  Created by Emanuel Gross von Trockau on 2023-06-01.
 //
-
-import SwiftUI
 import Blackbird
+import SwiftUI
+
 
 struct RecipeFinder: View {
     
@@ -18,61 +18,66 @@ struct RecipeFinder: View {
     }) var recipes
     
     
-    @State private var searchText = ""
-    @State private var add = ""
-    
+    @State var searchText: String = ""
     var body: some View {
-        VStack{
-            
-            Button(action: {
-                Task{
-                    try await db!.transaction { core in try
-                        core.query("INSERT INTO Recipe Book (ingredient) VALUES?",
-                        add)
+        NavigationView{
+            VStack{
                         
-                    }
-                    
-                }
-                add = ""
-                
-            }, label: {
-                Spacer()
-                Text("ADD")
-                    .font(.caption)
-            })
-
-            Form{
+                        HStack{
+                            TextField("Ingredient", text:
+                                        $searchText)
+                           
+                            Button(action: {
                                 
-                Section(header: Text("Ingredients")) {
-                   
-                    HStack{
-
-                        TextField("Ingredient", text: $searchText)
-                        
-                        Button(action: {
-                            searchText = ""
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(.gray)
+                                Task{
+                                    try await db!.transaction { core in try
+                                        core.query("INSERT INTO Recipe (ingredients) VALUES (?)",
+                                                   searchText)
+                                    }
+                                    searchText = ""
+                                }
+                                
+                                
+                            }, label: {
+                                Spacer()
+                                Text("ADD")
+                                    .font(.caption)
+                            })
+                            Button(action: {
+                                searchText = ""
+                            })
+                            {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
+                            
+                            
+                            
                         }
-                                                
-                    }
-                    List{
+                    
+                    
+                
+                List{
+                    Section(header: Text("Text")) {
+                        
                         
                         ForEach(recipes.results) { currentItem in
-                            Text(currentItem.title)
+                            Label(title: {
+                                Text(currentItem.title)
+                            }, icon: {
+                                Image(systemName: "circle.fill")
+                            })
+                            
                             
                         }
                         
                         
-                        
-                        
                     }
+                    
                 }
                 
             }
         }
-            
             .navigationTitle("Recipe Book ")
         
     }
@@ -82,6 +87,7 @@ struct RecipeFinder_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
             RecipeFinder()
+                .environment(\.blackbirdDatabase, AppDatabase.instance )
         }
     }
 }

@@ -14,6 +14,7 @@ struct Recipe_FinderApp: App {
     var body: some Scene {
         WindowGroup {
             RecipeFinder()
+                .environment(\.blackbirdDatabase, AppDatabase.instance )
         }
     }
 }
