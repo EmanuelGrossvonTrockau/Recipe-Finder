@@ -25,9 +25,23 @@ struct RecipeFinder: View {
     var body: some View {
         
             VStack{
-                HStack{
-                    TextField("Ingredient", text:
-                                $searchText)
+               
+                List{
+                    Section(header: Text("Title")) {
+                        TextField("title", text: $Title)
+                    }
+                }
+               
+                List{
+                    Section(header: Text("Steps")) {
+                        TextEditor(text: $step)
+                    }
+                }
+                
+                
+                HStack {
+                        TextField("Ingredient", text:
+                                    $searchText)
                     
                     Button(action: {
                         
@@ -42,7 +56,7 @@ struct RecipeFinder: View {
                         
                     }, label: {
                         Text("ADD")
-                            .font(.caption)
+                        .font(.caption)
                     })
                 }
                 
@@ -65,16 +79,7 @@ struct RecipeFinder: View {
                         }
                     }
                 }
-                List{
-                    Section(header: Text("Steps")) {
-                        TextEditor(text: $step)
-                    }
-                }
-                List{
-                    Section(header: Text("Title")) {
-                        TextField("title", text: $Title)
-                    }
-                }
+               
             }
         
             .navigationTitle("Recipe Book ")
