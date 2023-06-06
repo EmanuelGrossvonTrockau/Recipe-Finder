@@ -8,6 +8,7 @@ import Blackbird
 import SwiftUI
 
 
+
 struct RecipeFinder: View {
     
     @Environment(\.blackbirdDatabase) var db:
@@ -19,46 +20,38 @@ struct RecipeFinder: View {
     
     
     @State var searchText: String = ""
+    @State var step: String = ""
+    @State var Title: String = ""
     var body: some View {
-        NavigationView{
+        
             VStack{
+                HStack{
+                    TextField("Ingredient", text:
+                                $searchText)
+                    
+                    Button(action: {
                         
-                        HStack{
-                            TextField("Ingredient", text:
-                                        $searchText)
-                           
-                            Button(action: {
-                                
-                                Task{
-                                    try await db!.transaction { core in try
-                                        core.query("INSERT INTO Recipe (ingredients) VALUES (?)",
-                                                   searchText)
-                                    }
-                                    searchText = ""
-                                }
-                                
-                                
-                            }, label: {
-                                Spacer()
-                                Text("ADD")
-                                    .font(.caption)
-                            })
-                            Button(action: {
-                                searchText = ""
-                            })
-                            {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.gray)
+                        Task{
+                            try await db!.transaction { core in try
+                                core.query("INSERT INTO Recipe (ingredients) VALUES (?)",
+                                           searchText)
                             }
-                            
-                            
-                            
+                            searchText = ""
                         }
-                    
-                    
+                        
+                        
+                    }, label: {
+                        Text("ADD")
+                            .font(.caption)
+                    })
+                }
+                
+                
+                .padding(20)
+                
                 
                 List{
-                    Section(header: Text("Text")) {
+                    Section(header: Text("Ingredients")) {
                         
                         
                         ForEach(recipes.results) { currentItem in
@@ -70,14 +63,20 @@ struct RecipeFinder: View {
                             
                             
                         }
-                        
-                        
                     }
-                    
                 }
-                
+                List{
+                    Section(header: Text("Steps")) {
+                        TextEditor(text: $step)
+                    }
+                }
+                List{
+                    Section(header: Text("Title")) {
+                        TextField("title", text: $Title)
+                    }
+                }
             }
-        }
+        
             .navigationTitle("Recipe Book ")
         
     }
